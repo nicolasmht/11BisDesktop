@@ -1,7 +1,11 @@
 import * as THREE from 'three';
+import {Howl, Howler} from 'howler';
 
 // Textures
 import FacadeTexture from '../textures/facade.png';
+
+// Audios
+import CityAudio from '../audios/city.mp3';
 
 function FacadeComponent(scene) {
 
@@ -12,6 +16,12 @@ function FacadeComponent(scene) {
     facadeSprite.position.z = 0.1;
 
     scene.add(facadeSprite);
+
+    // Audio
+    var sound = new Howl({
+        src: CityAudio,
+        volume: 0.25
+    }).play();
 
     this.update = function(time) {
         
