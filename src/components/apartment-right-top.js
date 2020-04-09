@@ -33,20 +33,20 @@ function ApartmentRightTop(scene) {
     scene.add(apartment);
 
     // Audio
-    let sound = new Howl({
-        src: BellAudio,
-        volume: 0.8,
-    });
+    // let sound = new Howl({
+    //     src: BellAudio,
+    //     volume: 0.8,
+    // });
 
-    sound.pos(2, 1, 0);
+    // sound.pos(2, 1, 0);
 
-    setTimeout(() => {
-        sound.play();
-    }, 10000);
+    // setTimeout(() => {
+    //     sound.play();
+    // }, 10000);
 
-    setTimeout(() => {
-        sound.play();
-    }, 20000);
+    // setTimeout(() => {
+    //     sound.play();
+    // }, 20000);
 
     this.update = (time) => {
 
