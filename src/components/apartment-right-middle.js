@@ -68,7 +68,8 @@ function ApartmentRightMiddle(scene) {
             isVisible: false,
         },
     ];
-
+    
+    // APARTMENT
     let apartment = CreateApartment(layers);
     apartment.position.x = 1.1;
     scene.add(apartment);
