@@ -17,11 +17,11 @@ function FacadeComponent(scene) {
 
     scene.add(facadeSprite);
 
-    // Audio
-    // var sound = new Howl({
-    //     src: CityAudio,
-    //     volume: 0.25
-    // }).play();
+    Audio
+    var sound = new Howl({
+        src: CityAudio,
+        volume: 0.25
+    }).play();
 
     this.update = function(time) {
         

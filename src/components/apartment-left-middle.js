@@ -53,16 +53,16 @@ function ApartmentLeftMiddle(scene) {
         },  
     ];
 
-    let windowRight = [
-        {
-            texture: TextureWindowDay,
-            isVisible: false,
-        },
-    ];
-
     let lightLeft = [
         {
             texture: TextureLightDay,
+            isVisible: false,
+        },
+    ];
+    
+    let windowRight = [
+        {
+            texture: TextureWindowDay,
             isVisible: false,
         },
     ];
@@ -73,37 +73,37 @@ function ApartmentLeftMiddle(scene) {
             isVisible: false,
         },
     ];
-
-
+    
+    
+    
+    // APARTMENT
     let apartment = CreateApartment(layers);
-    let apartmentWindowLeft = CreateWindow(windowLeft);
-    let apartmentWindowRight = CreateWindow(windowRight);
-    let apartmentLightLeft = CreateWindow(lightLeft);
-    let apartmentLightRight = CreateWindow(lightRight);
-
     apartment.position.x -= 1.1;
+    scene.add(apartment);
 
     // LEFT
+    let apartmentWindowLeft = CreateWindow(windowLeft);
     apartmentWindowLeft.position.z = 1;
     apartmentWindowLeft.position.x = -1.46;
     apartmentWindowLeft.position.y = -0.01;
-
+    
+    let apartmentLightLeft = CreateWindow(lightLeft);
     apartmentLightLeft.position.z = 1;
     apartmentLightLeft.position.x = -1.462;
     apartmentLightLeft.position.y = 0.003;
-
+    scene.add(apartmentWindowLeft, apartmentLightLeft);
+    
     // RIGHT
+    let apartmentWindowRight = CreateWindow(windowRight);
     apartmentWindowRight.position.z = 1;
     apartmentWindowRight.position.x = -0.76;
     apartmentWindowRight.position.y = -0.01;
-
+    
+    let apartmentLightRight = CreateWindow(lightRight);
     apartmentLightRight.position.z = 1;
     apartmentLightRight.position.x = -0.762;
     apartmentLightRight.position.y = 0.003;
-
-
-
-    scene.add(apartment, apartmentWindowLeft, apartmentWindowRight, apartmentLightLeft, apartmentLightRight);
+    scene.add(apartmentWindowRight, apartmentLightRight);
 
     this.update = (time) => {
         
