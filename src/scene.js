@@ -128,6 +128,9 @@ function Scene(canvas) {
         scene.children.forEach((child) => {
             if (child.name == "Apartment") {
                 child.children.forEach((apartment) => {
+
+                    if (apartment.name == 'Windows') return;
+
                     apartment.position.x = (x * apartment.parallax.level) * 0.005;
                     apartment.position.y = (y * apartment.parallax.level) * 0.005;
                 });
