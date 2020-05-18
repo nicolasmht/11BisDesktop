@@ -47,3 +47,43 @@ html, body {
         background-color: transparent;
     }
 }
+
+#container-start{
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    transition: all 3s;
+
+    &.fadeOut {
+        opacity: 0;
+        pointer-events: none;
+        height: 0;
+    }
+
+    .logo{
+        width: 30vw;
+        margin-bottom: 2.5vw;
+    }
+
+    #container-buttons{
+
+        .button{
+            height: 3.5vw;
+            margin: 0 .5vw;
+            cursor: pointer;
+        }
+    }
+}

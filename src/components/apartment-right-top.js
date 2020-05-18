@@ -1,55 +1,49 @@
 import * as THREE from 'three';
 
 import CreateApartment from '../utils/createApartments';
+import CreateWindows from '../utils/createWindows';
 
-import TextureBackground from '../textures/apartment-right-top/background.png';
-import TextureDivingRoom from '../textures/apartment-right-top/diningroom.png';
-import TextureLivingRoom from '../textures/apartment-right-top/livingroom.png';
+import Timeline from '../timelines/apartment-right-top';
 
-// Audios
-import BellAudio from '../audios/bell.wav';
+// Window
+import TextureSquareWindow from '../textures/windows/square-window.png';
+import TextureSquareShadow from '../textures/windows/square-shadow.png';
+import TextureSquareFrame from '../textures/windows/square-frame.png';
 
 function ApartmentRightTop(scene) {
 
-    let layers = [
-        {
-            texture: TextureBackground,
-            level: 0,
-        },
-        {
-            texture: TextureDivingRoom,
-            level: 1,
-        },
-        {
-            texture: TextureLivingRoom,
-            level: 1,
-        },
-    ];
-
-    let apartment = CreateApartment(layers);
-    apartment.position.y = 1.1;
+    // Create the parallax with objects
+    let apartment = CreateApartment(Timeline, "top-right");
     apartment.position.x = 1.1;
+    apartment.position.y = 1.2;
+
+    let windows = CreateWindows(TextureSquareWindow, TextureSquareShadow, TextureSquareFrame);
+    //apartment.add(windows);
 
     scene.add(apartment);
 
-    // Audio
-    let sound = new Howl({
-        src: BellAudio,
-        volume: 0.8,
-    });
-
-    sound.pos(2, 1, 0);
-
-    setTimeout(() => {
-        sound.play();
-    }, 10000);
-
-    setTimeout(() => {
-        sound.play();
-    }, 20000);
-
     this.update = (time) => {
 
+        const currentApartment = scene.getObjectByName("Apartment-top-right");
+
+        Timeline.map((layer, i) => {
+            layer.animations.map((animation, ii) => {
+
+                if (ii <= 0) return;
+
+                if (time > animation.time && animation.passed == undefined) {
+
+                    currentApartment.getObjectByName(layer.name).children[ii].visible = false;
+
+                    if (currentApartment.getObjectByName(layer.name).children[ii + 1]) {
+                        currentApartment.getObjectByName(layer.name).children[ii + 1].visible = true;
+                    }
+                    
+
+                    animation.passed = true
+                }
+            })
+        })
     }
 
     this.helpers = (gui) => {

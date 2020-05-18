@@ -15,36 +15,53 @@ const isDev = (window.location.href.indexOf('#dev') > -1) ? true : false;
 
 const scene = new Scene(canvas);
 
-function resizeCanvas() {
-	canvas.style.width = '100%';
-	canvas.style.height= '100%';
-	
-	canvas.width  = canvas.offsetWidth;
-	canvas.height = canvas.offsetHeight;
+const startExperience = () => {
+
+    scene.setStarted(true);
+
+    function resizeCanvas() {
+        canvas.style.width = '100%';
+        canvas.style.height= '100%';
+        
+        canvas.width  = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+        
+        scene.onWindowResize();
+    }
     
-    scene.onWindowResize();
-}
-
-function bindEventListeners() {
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    function bindEventListeners() {
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        window.addEventListener('mousemove', scene.onMouseMove);
+    }
     
-    window.addEventListener('mousemove', scene.onMouseMove);
+    function render() {
+        // stats.begin();
+    
+        scene.update();
+    
+        // stats.end();
+    
+        requestAnimationFrame(render);
+    }
+
+    bindEventListeners();
+    render();
+    scene.helpers();
 }
 
-function render() {
-    // stats.begin();
+document.querySelector('.button.start').addEventListener('click', () => {
+    startExperience();
 
-    scene.update();
+    document.querySelector('#container-start').classList.add('fadeOut');
+});
 
-    // stats.end();
-
-    requestAnimationFrame(render);
-
-}
+/*
 bindEventListeners();
 render();
 scene.helpers();
+*/
 
 // const code = getCode().then(code => {
 

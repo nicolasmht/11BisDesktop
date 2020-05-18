@@ -1,25 +1,96 @@
 import * as THREE from 'three';
 
-function CreateApartment(layers) {
+function CreateApartment(layers, name) {
     
-    let apartment = new THREE.Group();
-    apartment.name = 'Apartment';
+    const apartment = new THREE.Group();
+    apartment.name = 'Apartment-' + name;
 
-    let textures = [];
-    layers.map(layer =>
-        textures.push(new Promise(resolve => new THREE.TextureLoader().load(layer.texture, resolve))),
-    );
+    let objects = [];
+    
+    layers.map(layer => {
 
-    Promise.all(textures).then(texturesLoaded => {
-        texturesLoaded.map((texture, i) => {
-            let sprite = CreateSprite(texture);
-            sprite.position.z = i * 0.001 - 0.1;
-            sprite.parallax = {
-                level: layers[i].level,
-            };
-            apartment.add(sprite);
-        });
+        let animations = [];
+
+        layer.animations.map(animation => {
+
+            animations.push(new Promise(resolve => {
+
+                const texture = new THREE.TextureLoader().load(animation.texture);
+                texture.minFilter = THREE.LinearFilter;
+
+                resolve({...animation, texture: texture})
+            }));
+        })
+
+        objects.push({...layer, animations});
     });
+
+    objects.map(object => {
+
+        const objectGroup = new THREE.Group();
+        objectGroup.name = object.name;
+        objectGroup.parallax = {
+            level: object.level,
+        };
+
+        Promise.all(object.animations).then((animation) => {
+            
+            animation.map((animation, i) => {
+                let sprite = CreateSprite(animation.texture);
+            
+                sprite.position.z = i * 0.001 - 0.1;
+                sprite.parallax = {
+                    level: object.level,
+                };
+
+                sprite.visible = i === 0 ? true : false;
+                sprite.name = object.name;
+
+                objectGroup.add(sprite)
+            })
+
+        })
+
+        apartment.add(objectGroup);
+
+    })
+    
+    // Promise.all(animations).then(animation => {
+
+    //     console.log(animation)
+
+    //     animation.map((content, i) => {
+    //         let sprite = CreateSprite(content.texture);
+            
+    //         sprite.position.z = i * 0.001 - 0.1;
+    //         sprite.parallax = {
+    //             level: level,
+    //         };
+
+    //         sprite.visible = i === 0 ? true : false;
+    //         sprite.name = name;
+
+    //         apartment.add(object);
+    //     });
+
+    //     apartment.add(object);
+
+    //     // console.log(animations)
+
+    //     // texturesLoaded.map((texture, i) => {
+
+    //     //     let sprite = CreateSprite(texture);
+    //     //     sprite.position.z = i * 0.001 - 0.1;
+    //     //     sprite.parallax = {
+    //     //         level: layers[i].level,
+    //     //     };
+
+
+
+    //     //     sprite.name = layers[i].name;
+    //     //     apartment.add(sprite);
+    //     // });
+    // });
 
     return apartment;
 }

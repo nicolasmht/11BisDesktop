@@ -8,16 +8,20 @@ import getNDCCoordinates from './utils/mouse';
 
 // Components
 import Facade from './components/facade';
-import ApartmentLeftMiddle from './components/apartment-left-middle';
-import ApartmentRightMiddle from './components/apartment-right-middle';
+
+import ApartmentLeftTop from './components/apartment-left-top';
 import ApartmentRightTop from './components/apartment-right-top';
 
-function Scene(canvas) {
+import ApartmentLeftMiddle from './components/apartment-left-middle';
+import ApartmentRightMiddle from './components/apartment-right-middle';
+
+import ApartmentLeftBottom from './components/apartment-left-bottom';
+
+function Scene(canvas, started = false) {
 
     const clock = new THREE.Clock();
     
     let state = { floor: 0, currentFloor: 0 };
-
 
     let mouse = new THREE.Vector2(0, 0);
 
@@ -70,17 +74,23 @@ function Scene(canvas) {
     function createComponents(scene) {
         const components = [
             new Facade(scene),
+            
+            new ApartmentLeftTop(scene),
+            new ApartmentRightTop(scene),
+
             new ApartmentLeftMiddle(scene),
             new ApartmentRightMiddle(scene),
-            new ApartmentRightTop(scene),
-            // new GeneralLights(scene),
-            // new SceneSubject(scene)
+
+            new ApartmentLeftBottom(scene)
         ];
 
         return components;
     }
 
     this.update = function() {
+
+        if (!started) return;
+
         const deltaTime = clock.getDelta();
         const elapsedTime = clock.getElapsedTime();
         
@@ -89,6 +99,10 @@ function Scene(canvas) {
         components.forEach(component => component.update(elapsedTime));
         
         renderer.render(scene, camera);
+    }
+
+    this.setStarted = function(value) {
+        started = value;
     }
 
     this.helpers = function() {
@@ -126,8 +140,14 @@ function Scene(canvas) {
         // camera.position.y = state.currentFloor + (y * 0.01);
 
         scene.children.forEach((child) => {
-            if (child.name == "Apartment") {
+            if (
+                child.name == "Apartment-top-left" || child.name == "Apartment-top-right" ||
+                child.name == "Apartment-middle-left" || child.name == "Apartment-middle-right" ||
+                child.name == "Apartment-bottom-left" || child.name == "Apartment-bottom-right"
+            ) {
                 child.children.forEach((apartment) => {
+
+                    // console.log(apartment)
 
                     if (apartment.name == 'Windows') return;
 
@@ -141,7 +161,7 @@ function Scene(canvas) {
     /*
      * Interactions
     */
-   window.addEventListener('keyup', changeFloor);
+    window.addEventListener('keyup', changeFloor);
 
     function changeFloor(event) {
 		switch (event.key) {
