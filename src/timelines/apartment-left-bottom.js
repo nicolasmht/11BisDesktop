@@ -72,7 +72,7 @@ export default [
     },
     {
         name: 'mur',
-        level: 0,
+        level: .15,
 
         animations: [
             { time: 0, texture: MurTexture00 },
@@ -100,7 +100,7 @@ export default [
     },
     {
         name: 'table',
-        level: 1,
+        level: .5,
 
         animations: [
             { time: 0, texture: TableTexture00 },
@@ -114,7 +114,7 @@ export default [
     },
     {
         name: 'tablebasse',
-        level: 1.5,
+        level: .6,
 
         animations: [
             { time: 0, texture: TableBasseTexture00 },
@@ -128,7 +128,7 @@ export default [
     },
     {
         name: 'chaise',
-        level: 1.5,
+        level: .6,
 
         animations: [
             { time: 0, texture: ChaiseTexture00 },

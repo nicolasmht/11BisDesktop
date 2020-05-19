@@ -115,7 +115,7 @@ export default [
     },
     {
         name: 'fleurs',
-        level: 1.5,
+        level: .8,
 
         animations: [
             { time: 0, texture: FleursTexture00 },
@@ -129,7 +129,7 @@ export default [
     },
     {
         name: 'chaise',
-        level: 1.5,
+        level: .8,
 
         animations: [
             { time: 0, texture: ChaiseTexture00 },
@@ -143,7 +143,7 @@ export default [
     },
     {
         name: 'bar',
-        level: 1.5,
+        level: .8,
 
         animations: [
             { time: 0, texture: BarTexture00 },

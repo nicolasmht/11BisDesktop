@@ -37,19 +37,19 @@ function ApartmentLeftMiddle(scene) {
             src: Door
         },
         {
-            time: 15,
+            time: 30,
             src: Peolpe
         },
         {
-            time: 25,
+            time: 50,
             src: Bell
         },
         {
-            time: 30,
+            time: 80,
             src: Cat
         },
         {
-            time: 35,
+            time: 100,
             src: Eat
         }
     ];

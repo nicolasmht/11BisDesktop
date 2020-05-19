@@ -61,13 +61,13 @@ export default [
         level: 0,
 
         animations: [
-            { time: 0, texture: CuisineTexture00 },
-            { time: 5, texture: CuisineTexture01 },
-            { time: 10, texture: CuisineTexture02 },
-            { time: 15, texture: CuisineTexture03 },
-            { time: 20, texture: CuisineTexture04 },
-            { time: 25, texture: CuisineTexture05 },
-            { time: 30, texture: CuisineTexture06 },
+            { time: 30, texture: CuisineTexture00 },
+            { time: 60, texture: CuisineTexture01 },
+            { time: 90, texture: CuisineTexture02 },
+            { time: 120, texture: CuisineTexture03 },
+            { time: 150, texture: CuisineTexture04 },
+            { time: 180, texture: CuisineTexture05 },
+            { time: 210, texture: CuisineTexture06 },
         ]
     },
     {
@@ -75,13 +75,13 @@ export default [
         level: 0,
 
         animations: [
-            { time: 0, texture: ParquetTexture00 },
-            { time: 5, texture: ParquetTexture01 },
-            { time: 10, texture: ParquetTexture02 },
-            { time: 15, texture: ParquetTexture03 },
-            { time: 20, texture: ParquetTexture04 },
-            { time: 25, texture: ParquetTexture05 },
-            { time: 30, texture: ParquetTexture06 },
+            { time: 30, texture: ParquetTexture00 },
+            { time: 60, texture: ParquetTexture01 },
+            { time: 90, texture: ParquetTexture02 },
+            { time: 120, texture: ParquetTexture03 },
+            { time: 150, texture: ParquetTexture04 },
+            { time: 180, texture: ParquetTexture05 },
+            { time: 210, texture: ParquetTexture06 },
         ]
     },
     {
@@ -89,55 +89,55 @@ export default [
         level: 0,
 
         animations: [
-            { time: 0, texture: PorteTexture00 },
-            { time: 5, texture: PorteTexture01 },
-            { time: 10, texture: PorteTexture02 },
-            { time: 15, texture: PorteTexture03 },
-            { time: 20, texture: PorteTexture04 },
-            { time: 25, texture: PorteTexture05 },
-            { time: 30, texture: PorteTexture06 },
+            { time: 30, texture: PorteTexture00 },
+            { time: 60, texture: PorteTexture01 },
+            { time: 90, texture: PorteTexture02 },
+            { time: 120, texture: PorteTexture03 },
+            { time: 150, texture: PorteTexture04 },
+            { time: 180, texture: PorteTexture05 },
+            { time: 210, texture: PorteTexture06 },
         ]
     },
     {
         name: 'salon',
-        level: 1,
+        level: .5,
 
         animations: [
-            { time: 0, texture: SalonTexture00 },
-            { time: 5, texture: SalonTexture01 },
-            { time: 10, texture: SalonTexture02 },
-            { time: 15, texture: SalonTexture03 },
-            { time: 20, texture: SalonTexture04 },
-            { time: 25, texture: SalonTexture05 },
-            { time: 30, texture: SalonTexture06 },
+            { time: 30, texture: SalonTexture00 },
+            { time: 60, texture: SalonTexture01 },
+            { time: 90, texture: SalonTexture02 },
+            { time: 120, texture: SalonTexture03 },
+            { time: 150, texture: SalonTexture04 },
+            { time: 180, texture: SalonTexture05 },
+            { time: 210, texture: SalonTexture06 },
         ]
     },
     {
         name: 'table',
-        level: 1.5,
+        level: .6,
 
         animations: [
-            { time: 0, texture: TableTexture00 },
-            { time: 5, texture: TableTexture01 },
-            { time: 10, texture: TableTexture02 },
-            { time: 15, texture: TableTexture03 },
-            { time: 20, texture: TableTexture04 },
-            { time: 25, texture: TableTexture05 },
-            { time: 30, texture: TableTexture06 },
+            { time: 30, texture: TableTexture00 },
+            { time: 60, texture: TableTexture01 },
+            { time: 90, texture: TableTexture02 },
+            { time: 120, texture: TableTexture03 },
+            { time: 150, texture: TableTexture04 },
+            { time: 180, texture: TableTexture05 },
+            { time: 210, texture: TableTexture06 },
         ]
     },
     {
         name: 'tablebasse',
-        level: 1.5,
+        level: .7,
 
         animations: [
-            { time: 0, texture: TableBasseTexture00 },
-            { time: 5, texture: TableBasseTexture01 },
-            { time: 10, texture: TableBasseTexture02 },
-            { time: 15, texture: TableBasseTexture03 },
-            { time: 20, texture: TableBasseTexture04 },
-            { time: 25, texture: TableBasseTexture05 },
-            { time: 30, texture: TableBasseTexture06 },
+            { time: 30, texture: TableBasseTexture00 },
+            { time: 60, texture: TableBasseTexture01 },
+            { time: 90, texture: TableBasseTexture02 },
+            { time: 120, texture: TableBasseTexture03 },
+            { time: 150, texture: TableBasseTexture04 },
+            { time: 180, texture: TableBasseTexture05 },
+            { time: 210, texture: TableBasseTexture06 },
         ]
     },
 ];

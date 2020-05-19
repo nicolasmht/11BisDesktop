@@ -115,7 +115,7 @@ export default [
     },
     {
         name: 'arbrechat',
-        level: 1.5,
+        level: .7,
 
         animations: [
             { time: 0, texture: ArbreChatTexture00 },
@@ -129,7 +129,7 @@ export default [
     },
     {
         name: 'plantes',
-        level: 1.5,
+        level: .7,
 
         animations: [
             { time: 0, texture: PlantesTexture00 },
@@ -143,7 +143,7 @@ export default [
     },
     {
         name: 'table',
-        level: 1.5,
+        level: .8,
 
         animations: [
             { time: 0, texture: TableTexture00 },
