@@ -1,11 +1,11 @@
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
-import { ConfigFirebase } from './config';
+import ConfigFirebase from './config';
 
 const app = firebase.initializeApp(ConfigFirebase);
 const firestore = app.firestore();
 
-const createCodeDatabase = async (code) => {
+export const createCodeDatabase = async (code) => {
     
     const datas = {
         code: code,
@@ -19,7 +19,7 @@ const createCodeDatabase = async (code) => {
         .set(datas);
 }
 
-const getCode = () => {
+export const getCode = () => {
     return new Promise(resolve => {
         if (sessionStorage.getItem('CODE') == null) {
             const code = Math.floor(Math.random() * (9999 - 1000) + 1000);
@@ -30,10 +30,10 @@ const getCode = () => {
         } else {
             resolve(sessionStorage.getItem('CODE'));
         }
-    })
+    });
 }
 
-const checkCodeExist = async () => {
+export const checkCodeExist = async () => {
 
     // Check in local storage
     if (sessionStorage.getItem('CODE') == null) { return true; }
@@ -44,4 +44,4 @@ const checkCodeExist = async () => {
     await firestore.collection('sessions').doc(code).get();
 }
 
-const generateCode = Math.floor(Math.random() * (9999 - 1000) + 1000);
+// export const generateCode = Math.floor(Math.random() * (9999 - 1000) + 1000);

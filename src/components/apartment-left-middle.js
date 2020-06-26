@@ -4,87 +4,29 @@ import { Howl, Howler } from 'howler';
 
 import CreateApartment from '../utils/createApartments';
 import CreateWindows from '../utils/createWindows';
+import AnimeTimeline from '../utils/animeTimeline';
+import AnimeWindows from '../utils/animeWindows';
 
 import Timeline from '../timelines/apartment-left-middle';
-
-// Window
-import TextureSquareWindow from '../textures/windows/square-window.png';
-import TextureSquareShadow from '../textures/windows/square-shadow.png';
-import TextureSquareFrame from '../textures/windows/square-frame.png';
-
-// Audios
-import Bell from '../audios/bell.wav';
-import Door from '../audios/door.wav';
-import Cat from '../audios/cat.wav';
-import Eat from '../audios/eat.wav';
-import Peolpe from '../audios/people-talking.wav';
 
 function ApartmentLeftMiddle(scene) {
 
     // Create the parallax with objects
-    let apartment = CreateApartment(Timeline, "middle-left");
+    let apartment = CreateApartment(Timeline[0], "Apartment-middle-left");
     apartment.position.x = -1.1;
 
-    let windows = CreateWindows(TextureSquareWindow, TextureSquareShadow, TextureSquareFrame);
-    //apartment.add(windows);
+    let windows = CreateWindows(Timeline[1]);
+    windows.position.x -= 0.011;
+    windows.position.y -= 0.015;
+    apartment.add(windows);
 
     scene.add(apartment);
 
-    // Audio
-    let TimelineAudios = [
-        {
-            time: 5,
-            src: Door
-        },
-        {
-            time: 30,
-            src: Peolpe
-        },
-        {
-            time: 50,
-            src: Bell
-        },
-        {
-            time: 80,
-            src: Cat
-        },
-        {
-            time: 100,
-            src: Eat
-        }
-    ];
+    const currentApartment = scene.getObjectByName('Apartment-middle-left');
 
     this.update = (time) => {
-
-        const currentApartment = scene.getObjectByName('Apartment-middle-left');
-
-        Timeline.map((layer, i) => {
-            layer.animations.map((animation, ii) => {
-
-                if (ii <= 0) return;
-
-                if (time > animation.time && animation.passed == undefined) {
-
-                    currentApartment.getObjectByName(layer.name).children[ii].visible = false;
-
-                    if (currentApartment.getObjectByName(layer.name).children[ii + 1]) {
-                        currentApartment.getObjectByName(layer.name).children[ii + 1].visible = true;
-                    }
-                    
-
-                    animation.passed = true;
-                }
-            })
-        })
-
-        TimelineAudios.map((audio) => {
-            if (time > audio.time && audio.passed == undefined) {
-                new Howl({ src: audio.src, autoplay: true, volume: .8, });
-                audio.passed = true;
-            }
-        })
-
-        // console.log(time)
+        AnimeTimeline(time, Timeline[0], currentApartment);
+        AnimeWindows(time, Timeline[1], currentApartment);
     }
 
     this.helpers = (gui) => {

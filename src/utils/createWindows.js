@@ -1,19 +1,63 @@
 import * as THREE from 'three';
 
-function createWindows(WindowTexture, TextureShadow, TextureFrame) {
+function createWindows(layers) {
+
+    let objects = [];
+
+    layers.map(layer => {
+
+        let animations = [];
+
+        layer.animations.map(animation => {
+
+            let aPromise = [];
+
+            for(let i = 0; i < 2; i++) {
+                aPromise.push(new Promise(resolve => {
+
+                    const texture = new THREE.TextureLoader().load(animation.texture);
+                    texture.minFilter = THREE.LinearFilter;
+    
+                    resolve({...animation, texture: texture})
+                }));
+            }
+
+            animations.push(aPromise);
+        });
+
+        objects.push({...layer, animations: animations});
+    });
 
     let windows = new THREE.Group();
-    windows.name = 'Windows';
+        windows.name = 'Windows';
 
-    let windowLeft = createWindowLayers(WindowTexture, TextureShadow, TextureFrame),
-        windowRight = createWindowLayers(WindowTexture, TextureShadow, TextureFrame);
+    objects.map((object, i) => {
 
-    windows.add(windowLeft, windowRight);
+        object.animations.map((animation, ii) => {
 
-    windowLeft.position.x = 0.35;
-    windowRight.position.x -= 0.35;
-    
+            let doubleWindows = new THREE.Group();
+            doubleWindows.name = object.name;
+            doubleWindows.visible = ii == 0 ? true : false;
+
+            Promise.all(animation).then((anime) => {
+
+                anime.map((windowTexture, ii) => {
+                    let sprite = CreateSprite(windowTexture.texture);
+                    sprite.position.x = (ii === 0) ? -0.35 : 0.35;
+                    doubleWindows.add(sprite);
+                });
+            });
+
+            windows.position.z = .4;
+            windows.add(doubleWindows);
+        });
+
+    });
+
     return windows;
+
+    // windowLeft.position.x = 0.35;
+    // windowRight.position.x -= 0.35;
 }
 
 function createWindowLayers(WindowTexture, TextureShadow, TextureFrame) {

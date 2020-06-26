@@ -1,143 +1,146 @@
-// Anime 00
-import ParquetTexture00 from '../textures/apartment-left-bottom/00/parquet.png';
-import MurTexture00 from '../textures/apartment-left-bottom/00/mur.png';
-import CuisineTexture00 from '../textures/apartment-left-bottom/00/cuisine.png';
-import TableTexture00 from '../textures/apartment-left-bottom/00/table.png';
-import TableBasseTexture00 from '../textures/apartment-left-bottom/00/tablebasse.png';
-import ChaiseTexture00 from '../textures/apartment-left-bottom/00/chaise.png';
+import Cuisine01 from '../textures/apartment-left-bottom/000/Cuisine-1.png';
+import Cuisine02 from '../textures/apartment-left-bottom/000/Cuisine-2.png';
 
-// Anime 01
-/*import ParquetTexture01 from '../textures/apartment-right-top/01/parquet.png';
-import PorteTexture01 from '../textures/apartment-right-top/01/porte.png';
-import SalonTexture01 from '../textures/apartment-right-top/01/salon.png';
-import TableTexture01 from '../textures/apartment-right-top/01/table.png';
-import TableBasseTexture01 from '../textures/apartment-right-top/01/tablebasse.png';
-import CuisineTexture01 from '../textures/apartment-right-top/01/cuisine.png';
+import Horloge01 from '../textures/apartment-left-bottom/000/Horloge-1.png';
+import Horloge02 from '../textures/apartment-left-bottom/000/Horloge-2.png';
+import Horloge03 from '../textures/apartment-left-bottom/000/Horloge-3.png';
 
-// Anime 02
-import ParquetTexture02 from '../textures/apartment-right-top/02/parquet.png';
-import PorteTexture02 from '../textures/apartment-right-top/02/porte.png';
-import SalonTexture02 from '../textures/apartment-right-top/02/salon.png';
-import TableTexture02 from '../textures/apartment-right-top/02/table.png';
-import TableBasseTexture02 from '../textures/apartment-right-top/02/tablebasse.png';
-import CuisineTexture02 from '../textures/apartment-right-top/02/cuisine.png';
+import Parquet01 from '../textures/apartment-left-bottom/000/Parquet-1.png';
+import Parquet02 from '../textures/apartment-left-bottom/000/Parquet-2.png';
+import Parquet03 from '../textures/apartment-left-bottom/000/Parquet-3.png';
+import Parquet04 from '../textures/apartment-left-bottom/000/Parquet-4.png';
 
-// Anime 03
-import ParquetTexture03 from '../textures/apartment-right-top/03/parquet.png';
-import PorteTexture03 from '../textures/apartment-right-top/03/porte.png';
-import SalonTexture03 from '../textures/apartment-right-top/03/salon.png';
-import TableTexture03 from '../textures/apartment-right-top/03/table.png';
-import TableBasseTexture03 from '../textures/apartment-right-top/03/tablebasse.png';
-import CuisineTexture03 from '../textures/apartment-right-top/03/cuisine.png';
+import Salon01 from '../textures/apartment-left-bottom/000/Salon-1.png';
+import Salon02 from '../textures/apartment-left-bottom/000/Salon-2.png';
 
-// Anime 04
-import ParquetTexture04 from '../textures/apartment-right-top/04/parquet.png';
-import PorteTexture04 from '../textures/apartment-right-top/04/porte.png';
-import SalonTexture04 from '../textures/apartment-right-top/04/salon.png';
-import TableTexture04 from '../textures/apartment-right-top/04/table.png';
-import TableBasseTexture04 from '../textures/apartment-right-top/04/tablebasse.png';
-import CuisineTexture04 from '../textures/apartment-right-top/04/cuisine.png';
+import Tableamanger01 from '../textures/apartment-left-bottom/000/Tableamanger-1.png';
+import Tableamanger02 from '../textures/apartment-left-bottom/000/Tableamanger-2.png';
+import Tableamanger03 from '../textures/apartment-left-bottom/000/Tableamanger-3.png';
 
+import Tablebasse01 from '../textures/apartment-left-bottom/000/Tablebasse-1.png';
+import Tablebasse02 from '../textures/apartment-left-bottom/000/Tablebasse-2.png';
+import Tablebasse03 from '../textures/apartment-left-bottom/000/Tablebasse-3.png';
+import Tablebasse04 from '../textures/apartment-left-bottom/000/Tablebasse-4.png';
+import Tablebasse05 from '../textures/apartment-left-bottom/000/Tablebasse-5.png';
 
-// Anime 05
-import ParquetTexture05 from '../textures/apartment-right-top/05/parquet.png';
-import PorteTexture05 from '../textures/apartment-right-top/05/porte.png';
-import SalonTexture05 from '../textures/apartment-right-top/05/salon.png';
-import TableTexture05 from '../textures/apartment-right-top/05/table.png';
-import TableBasseTexture05 from '../textures/apartment-right-top/05/tablebasse.png';
-import CuisineTexture05 from '../textures/apartment-right-top/05/cuisine.png';
-
-// Anime 06
-import ParquetTexture06 from '../textures/apartment-right-top/06/parquet.png';
-import PorteTexture06 from '../textures/apartment-right-top/06/porte.png';
-import SalonTexture06 from '../textures/apartment-right-top/06/salon.png';
-import TableTexture06 from '../textures/apartment-right-top/06/table.png';
-import TableBasseTexture06 from '../textures/apartment-right-top/06/tablebasse.png';
-import CuisineTexture06 from '../textures/apartment-right-top/06/cuisine.png';*/
+import Fenetre1VJ from '../textures/windows/Fenetre-1V-J.png';
+import Fenetre2VJ from '../textures/windows/Fenetre-2V-J.png';
+import Fenetre2VN from '../textures/windows/Fenetre-2V-N.png';
+import Fenetre2VR from '../textures/windows/Fenetre-2V-R.png';
+import Fenetre4VJ from '../textures/windows/Fenetre-4V-J.png';
+import Fenetre4VN from '../textures/windows/Fenetre-4V-N.png';
+import Fenetre4VR from '../textures/windows/Fenetre-4V-R.png';
+import Fenetre6VJ from '../textures/windows/Fenetre-6V-J.png';
+import Fenetre6VN from '../textures/windows/Fenetre-6V-N.png';
+import Fenetre6VR from '../textures/windows/Fenetre-6V-R.png';
 
 export default [
-    {
-        name: 'parquet',
-        level: 0,
+    [
+        {
+            name: 'parquet',
+            level: 0,
 
-        animations: [
-            { time: 0, texture: ParquetTexture00 },
-            // { time: 5, texture: CuisineTexture01 },
-            // { time: 10, texture: CuisineTexture02 },
-            // { time: 15, texture: CuisineTexture03 },
-            // { time: 20, texture: CuisineTexture04 },
-            // { time: 25, texture: CuisineTexture05 },
-            // { time: 30, texture: CuisineTexture06 },
-        ]
-    },
-    {
-        name: 'mur',
-        level: .15,
+            animations: [
+                // 18:00
+                { time: 0, texture: Parquet04 },
 
-        animations: [
-            { time: 0, texture: MurTexture00 },
-            // { time: 5, texture: ParquetTexture01 },
-            // { time: 10, texture: ParquetTexture02 },
-            // { time: 15, texture: ParquetTexture03 },
-            // { time: 20, texture: ParquetTexture04 },
-            // { time: 25, texture: ParquetTexture05 },
-            // { time: 30, texture: ParquetTexture06 },
-        ]
-    },
-    {
-        name: 'cuisine',
-        level: 0,
+                // 19:00
+                { time: 33, texture: Parquet03 },
 
-        animations: [
-            { time: 0, texture: CuisineTexture00 },
-            // { time: 5, texture: PorteTexture01 },
-            // { time: 10, texture: PorteTexture02 },
-            // { time: 15, texture: PorteTexture03 },
-            // { time: 20, texture: PorteTexture04 },
-            // { time: 25, texture: PorteTexture05 },
-            // { time: 30, texture: PorteTexture06 },
-        ]
-    },
-    {
-        name: 'table',
-        level: .5,
+                // 21:00
+                { time: 100, texture: Parquet01 },
+            ]
+        },
+        {
+            name: 'cuisine',
+            level: 0,
 
-        animations: [
-            { time: 0, texture: TableTexture00 },
-            // { time: 5, texture: SalonTexture01 },
-            // { time: 10, texture: SalonTexture02 },
-            // { time: 15, texture: SalonTexture03 },
-            // { time: 20, texture: SalonTexture04 },
-            // { time: 25, texture: SalonTexture05 },
-            // { time: 30, texture: SalonTexture06 },
-        ]
-    },
-    {
-        name: 'tablebasse',
-        level: .6,
+            animations: [
+                // 18:00
+                { time: 0, texture: Cuisine02 },
 
-        animations: [
-            { time: 0, texture: TableBasseTexture00 },
-            // { time: 5, texture: TableBasseTexture01 },
-            // { time: 10, texture: TableBasseTexture02 },
-            // { time: 15, texture: TableBasseTexture03 },
-            // { time: 20, texture: TableBasseTexture04 },
-            // { time: 25, texture: TableBasseTexture05 },
-            // { time: 30, texture: TableBasseTexture06 },
-        ]
-    },
-    {
-        name: 'chaise',
-        level: .6,
+                // 19:00
+                { time: 41, texture: Cuisine01 },
 
-        animations: [
-            { time: 0, texture: ChaiseTexture00 },
-            // { time: 5, texture: TableBasseTexture01 },
-            // { time: 10, texture: TableBasseTexture02 },
-            // { time: 15, texture: TableBasseTexture03 },
-            // { time: 20, texture: TableBasseTexture04 },
-            // { time: 25, texture: TableBasseTexture05 },
-            // { time: 30, texture: TableBasseTexture06 },
-        ]
-    },
+                // 20:00
+                { time: 66, texture: Cuisine02 },
+                { time: 83, texture: Cuisine01 },
+            ]
+        },
+        {
+            name: 'salon',
+            level: .15,
+
+            animations: [
+                // 18:00
+                { time: 0, texture: Salon01 },
+
+                // 19:00
+                { time: 33, texture: Salon02 },
+
+                // 20:00
+                { time: 83, texture: Salon01 },
+
+                // 21:00
+                { time: 100, texture: Salon02 },
+            ]
+        },
+        {
+            name: 'horloge',
+            level: 0,
+
+            animations: [
+                // 18:00
+                { time: 0, texture: Horloge03 },
+
+                // 19:00
+                { time: 33, texture: Horloge01 },
+
+                // 20:00
+                { time: 83, texture: Horloge02 },
+            ]
+        },
+        {
+            name: 'table',
+            level: .5,
+
+            animations: [
+                // 18:00
+                { time: 0, texture: Tableamanger02 },
+
+                // 19:00
+                { time: 33, texture: Tableamanger01 },
+                { time: 41, texture: Tableamanger03 },
+
+                // 20:00
+                { time: 83, texture: Tableamanger02 },
+            ]
+        },
+        {
+            name: 'tablebasse',
+            level: .6,
+
+            animations: [
+                // 18:00
+                { time: 0, texture: Tablebasse04  },
+
+                // 19:00
+                { time: 33, texture: Tablebasse03 },
+
+                // 20:00
+                { time: 83, texture: Tablebasse01 },
+            ]
+        },
+    ],
+    [
+        {
+            name: 'cadre',
+            animations: [
+                // 18:00
+                { time: 0, texture: Fenetre4VR },
+                // 21:00
+                { time: 100, texture: Fenetre4VN },
+            ]
+        }
+    ]
 ];

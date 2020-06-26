@@ -5,49 +5,6 @@ html, body {
     margin: 0;
 }
 
-.container-code{
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    .title-code{
-        margin: 0;
-        font-size: 1rem;
-    }
-
-    .code{
-        margin: 1vw 0;
-        font-size: 5rem;
-    }
-
-    .btn-start{
-        width: 10vw;
-        height: 3vw;
-        border: 1px solid #000;
-        border-radius: 5vw;
-        color: #000;
-        cursor: pointer;
-
-        transition: all .3s;
-
-        &:hover{
-            background-color: #000;
-            color: #fff;
-        }
-    }
-
-    &.hidden{
-        opacity: 0;
-        pointer-events: none;
-        background-color: transparent;
-    }
-}
-
 #container-start{
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
@@ -78,12 +35,82 @@ html, body {
         margin-bottom: 2.5vw;
     }
 
+    .container-code{
+        width: 30vw;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 2vw;
+        opacity: 0;
+
+        transition: all .3s;
+
+        // background-color: red;
+
+        .code{
+            position: relative;
+            padding: .6vw 1vw;
+            // margin: 0 1vw;
+            font-size: 4vw;
+
+            border: 10px solid #2A3669;
+            color: #111;
+            font-weight: 800;
+
+            &:before{
+                position: absolute;
+                top: 0; left: 0; bottom: 0; right: 0;
+                content: '';
+                border: 2px solid #FFB99D;
+                outline-style: outset;
+            }
+        }
+
+        .explication{
+            width: 100%;
+            margin-top: 1vw;
+            text-align: center;
+        }
+    }
+
     #container-buttons{
 
         .button{
             height: 3.5vw;
             margin: 0 .5vw;
             cursor: pointer;
+            opacity: 0;
+
+            transition: all .3s;
+        }
+    }
+
+    .container-loader{
+        position: absolute;
+        top: 60%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 4px;
+
+        z-index: 1000;
+
+        background-color: #2A3669;
+
+        border-radius: 5px;
+
+        transition: all .3s;
+
+        pointer-events: none;
+
+        .progress{
+            position: relative;
+            width: 0;
+            height: 100%;
+            border-radius: 5px;
+
+            background-color: #FFB99D;
         }
     }
 }

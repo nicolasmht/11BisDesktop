@@ -20,7 +20,7 @@ function FacadeComponent(scene) {
     // Audio
     var sound = new Howl({
         src: CityAudio,
-        volume: 0.25,
+        volume: 1,
         loop: true,
     }).play();
 

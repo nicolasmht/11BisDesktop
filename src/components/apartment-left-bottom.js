@@ -2,48 +2,30 @@ import * as THREE from 'three';
 
 import CreateApartment from '../utils/createApartments';
 import CreateWindows from '../utils/createWindows';
+import AnimeTimeline from '../utils/animeTimeline';
+import AnimeWindows from '../utils/animeWindows';
 
 import Timeline from '../timelines/apartment-left-bottom';
-
-// Window
-import TextureSquareWindow from '../textures/windows/square-window.png';
-import TextureSquareShadow from '../textures/windows/square-shadow.png';
-import TextureSquareFrame from '../textures/windows/square-frame.png';
 
 function ApartmentLeftBottom(scene) {
 
     // Create the parallax with objects
-    let apartment = CreateApartment(Timeline, "bottom-left");
+    let apartment = CreateApartment(Timeline[0], "Apartment-bottom-left");
     apartment.position.x = -1.1;
     apartment.position.y = -1.2;
 
-    let windows = CreateWindows(TextureSquareWindow, TextureSquareShadow, TextureSquareFrame);
-    //apartment.add(windows);
+    let windows = CreateWindows(Timeline[1]);
+    windows.position.x -= 0.011;
+    windows.position.y -= 0.015;
+    apartment.add(windows);
 
     scene.add(apartment);
 
+    const currentApartment = scene.getObjectByName('Apartment-bottom-left');
+
     this.update = (time) => {
-
-        const currentApartment = scene.getObjectByName('Apartment-bottom-left');
-
-        Timeline.map((layer, i) => {
-            layer.animations.map((animation, ii) => {
-
-                if (ii <= 0) return;
-
-                if (time > animation.time && animation.passed == undefined) {
-
-                    currentApartment.getObjectByName(layer.name).children[ii].visible = false;
-
-                    if (currentApartment.getObjectByName(layer.name).children[ii + 1]) {
-                        currentApartment.getObjectByName(layer.name).children[ii + 1].visible = true;
-                    }
-                    
-
-                    animation.passed = true
-                }
-            })
-        })
+        AnimeTimeline(time, Timeline[0], currentApartment);
+        AnimeWindows(time, Timeline[1], currentApartment);
     }
 
     this.helpers = (gui) => {

@@ -1,8 +1,15 @@
+import * as THREE from 'three';
 import Events from 'events';
 const events = new Events();
 
+import { getCode } from './services/firebase';
+
 import Scene from './scene';
 import MainProd from './main.prod';
+
+import firebase from 'firebase/app';
+import 'firebase/storage';
+var db = firebase.firestore();
 
 // import Stats from 'stats-js';
 // const stats = new Stats();
@@ -16,6 +23,8 @@ const isDev = (window.location.href.indexOf('#dev') > -1) ? true : false;
 const scene = new Scene(canvas);
 
 const startExperience = () => {
+
+    document.querySelector('#container-start').classList.add('fadeOut');
 
     scene.setStarted(true);
 
@@ -36,13 +45,8 @@ const startExperience = () => {
         window.addEventListener('mousemove', scene.onMouseMove);
     }
     
-    function render() {
-        // stats.begin();
-    
-        scene.update();
-    
-        // stats.end();
-    
+    function render() {    
+        scene.update();   
         requestAnimationFrame(render);
     }
 
@@ -53,23 +57,39 @@ const startExperience = () => {
 
 document.querySelector('.button.start').addEventListener('click', () => {
     startExperience();
-
-    document.querySelector('#container-start').classList.add('fadeOut');
 });
 
-/*
-bindEventListeners();
-render();
-scene.helpers();
-*/
+if (isDev) {
+    startExperience();
+}
 
-// const code = getCode().then(code => {
+const code = getCode().then(code => {
 
-//     // Display code
-//     document.querySelector('.code').innerText = code;
+    // Display code
+    const splitedCode = code.split('');
+    document.querySelector('.container-code .code.c-01').innerText = splitedCode[0];
+    document.querySelector('.container-code .code.c-02').innerText = splitedCode[1];
+    document.querySelector('.container-code .code.c-03').innerText = splitedCode[2];
+    document.querySelector('.container-code .code.c-04').innerText = splitedCode[3];
 
-//     events.emit('listenerSessionCode', code);
-// });
+    db.collection('sessions')
+        .doc(code.toString())
+        .onSnapshot(docSnapshot => {
+    
+        const datas = docSnapshot.data();
+        
+        // When the connected in firebase is true
+        if (datas.connected) {
+            startExperience();
+        } else {
+            console.log('Not connected')
+        }
+    
+    }, error => {
+        console.log(`Encountered error: ${err}`);
+    });
+    // console.log(code)
+});
 
 // events.on('listenerSessionCode', (code) => {
     
@@ -97,3 +117,24 @@ scene.helpers();
 
 
 // MainProd();
+
+// Overlay of loader
+THREE.DefaultLoadingManager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+	console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+};
+
+THREE.DefaultLoadingManager.onLoad = function ( ) {
+    document.querySelector('.container-loader').style.visibility = 'hidden';
+
+    // document.querySelector('#container-buttons .button:first-child').style.opacity = '1';
+    // document.querySelector('#container-buttons .button:last-child').style.opacity = '1';
+    document.querySelector('.container-code').style.opacity = '1';
+};
+
+THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+    document.querySelector('.container-loader .progress').style.width = (100 * itemsLoaded) / itemsTotal + '%';
+};
+
+THREE.DefaultLoadingManager.onError = function ( url ) {
+
+};

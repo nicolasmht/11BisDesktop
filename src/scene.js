@@ -16,6 +16,7 @@ import ApartmentLeftMiddle from './components/apartment-left-middle';
 import ApartmentRightMiddle from './components/apartment-right-middle';
 
 import ApartmentLeftBottom from './components/apartment-left-bottom';
+import ApartmentRightBottom from './components/apartment-right-bottom';
 
 function Scene(canvas, started = false) {
 
@@ -81,7 +82,8 @@ function Scene(canvas, started = false) {
             new ApartmentLeftMiddle(scene),
             new ApartmentRightMiddle(scene),
 
-            new ApartmentLeftBottom(scene)
+            new ApartmentLeftBottom(scene),
+            new ApartmentRightBottom(scene)
         ];
 
         return components;

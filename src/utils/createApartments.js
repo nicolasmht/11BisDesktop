@@ -3,7 +3,7 @@ import * as THREE from 'three';
 function CreateApartment(layers, name) {
     
     const apartment = new THREE.Group();
-    apartment.name = 'Apartment-' + name;
+    apartment.name = name;
 
     let objects = [];
     
@@ -20,7 +20,7 @@ function CreateApartment(layers, name) {
 
                 resolve({...animation, texture: texture})
             }));
-        })
+        });
 
         objects.push({...layer, animations});
     });
@@ -38,7 +38,8 @@ function CreateApartment(layers, name) {
             animation.map((animation, i) => {
                 let sprite = CreateSprite(animation.texture);
             
-                sprite.position.z = i * 0.001 - 0.1;
+                sprite.position.z = 0 //i * 0.001 - 0.1;
+
                 sprite.parallax = {
                     level: object.level,
                 };
@@ -54,43 +55,6 @@ function CreateApartment(layers, name) {
         apartment.add(objectGroup);
 
     })
-    
-    // Promise.all(animations).then(animation => {
-
-    //     console.log(animation)
-
-    //     animation.map((content, i) => {
-    //         let sprite = CreateSprite(content.texture);
-            
-    //         sprite.position.z = i * 0.001 - 0.1;
-    //         sprite.parallax = {
-    //             level: level,
-    //         };
-
-    //         sprite.visible = i === 0 ? true : false;
-    //         sprite.name = name;
-
-    //         apartment.add(object);
-    //     });
-
-    //     apartment.add(object);
-
-    //     // console.log(animations)
-
-    //     // texturesLoaded.map((texture, i) => {
-
-    //     //     let sprite = CreateSprite(texture);
-    //     //     sprite.position.z = i * 0.001 - 0.1;
-    //     //     sprite.parallax = {
-    //     //         level: layers[i].level,
-    //     //     };
-
-
-
-    //     //     sprite.name = layers[i].name;
-    //     //     apartment.add(sprite);
-    //     // });
-    // });
 
     return apartment;
 }
