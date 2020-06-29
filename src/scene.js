@@ -2,6 +2,12 @@ import * as THREE from 'three';
 import Anime from 'animejs';
 import * as dat from 'dat.gui';
 
+import firebase from 'firebase/app';
+import 'firebase/storage';
+var db = firebase.firestore();
+
+import { getCode } from './services/firebase';
+
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import getNDCCoordinates from './utils/mouse';
@@ -17,6 +23,10 @@ import ApartmentRightMiddle from './components/apartment-right-middle';
 
 import ApartmentLeftBottom from './components/apartment-left-bottom';
 import ApartmentRightBottom from './components/apartment-right-bottom';
+
+import StaircaseBottom from './components//staircase-bottom';
+import StaircaseMiddle from './components//staircase-middle';
+import StaircaseTop from './components//staircase-top';
 
 function Scene(canvas, started = false) {
 
@@ -40,6 +50,10 @@ function Scene(canvas, started = false) {
     // controls.enableDamping = true;
     // controls.dampingFactor = 0.25;
     // controls.enableZoom = false;
+
+    let code = 0;
+
+    getCode().then(c => code = c);
 
     function buildScene() {
         const scene = new THREE.Scene();
@@ -83,7 +97,11 @@ function Scene(canvas, started = false) {
             new ApartmentRightMiddle(scene),
 
             new ApartmentLeftBottom(scene),
-            new ApartmentRightBottom(scene)
+            new ApartmentRightBottom(scene),
+
+            new StaircaseBottom(scene),
+            new StaircaseMiddle(scene),
+            new StaircaseTop(scene),
         ];
 
         return components;
@@ -158,6 +176,49 @@ function Scene(canvas, started = false) {
                 });
             }
         });
+
+        let currentAppartment = 3;
+
+        // Appartment middle
+        if (state.floor == 0) {
+            if (x < 0) {
+                // console.log('Apartment left middle')
+                currentAppartment = 3;
+            } else {
+                // console.log('Apartment right middle')
+                currentAppartment = 4;
+            }
+        }
+
+        // Appartment top
+        if (state.floor == 1) {
+            if (x < 0) {
+                // console.log('Apartment left top')
+                currentAppartment = 5;
+            } else {
+                // console.log('Apartment right top')
+                currentAppartment = 6;
+            }
+        }
+
+        // Appartment bottom
+        if (state.floor == -1) {
+            if (x < 0) {
+                // console.log('Apartment left bottom')
+                currentAppartment = 1;
+            } else {
+                // console.log('Apartment right bottom')
+                currentAppartment = 2;
+            }
+        }
+
+        if (code !== 0) {
+            db.collection('sessions')
+            .doc(code.toString())
+            .update({
+                apartment: currentAppartment
+            });
+        }
     }
 
     /*

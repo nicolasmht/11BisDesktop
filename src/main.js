@@ -66,7 +66,7 @@ if (isDev) {
 const code = getCode().then(code => {
 
     // Display code
-    const splitedCode = code.split('');
+    const splitedCode = code.toString().split('');
     document.querySelector('.container-code .code.c-01').innerText = splitedCode[0];
     document.querySelector('.container-code .code.c-02').innerText = splitedCode[1];
     document.querySelector('.container-code .code.c-03').innerText = splitedCode[2];

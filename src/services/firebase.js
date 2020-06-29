@@ -5,18 +5,30 @@ import ConfigFirebase from './config';
 const app = firebase.initializeApp(ConfigFirebase);
 const firestore = app.firestore();
 
-export const createCodeDatabase = async (code) => {
+const createCodeDatabase = async (code) => {
     
     const datas = {
         code: code,
         connected: false,
-        use: false
+        use: false,
+        apartment: 0
     };
 
     await firestore
         .collection('sessions')
         .doc(code.toString())
         .set(datas);
+}
+
+export const checkCodeExist = async () => {
+
+    // Check in local storage
+    if (sessionStorage.getItem('CODE') == null) { return true; }
+
+    const code = sessionStorage.getItem('CODE');
+
+    // Check if code exist in database
+    await firestore.collection('sessions').doc(code).get();
 }
 
 export const getCode = () => {
@@ -31,17 +43,6 @@ export const getCode = () => {
             resolve(sessionStorage.getItem('CODE'));
         }
     });
-}
-
-export const checkCodeExist = async () => {
-
-    // Check in local storage
-    if (sessionStorage.getItem('CODE') == null) { return true; }
-
-    const code = sessionStorage.getItem('CODE');
-
-    // Check if code exist in database
-    await firestore.collection('sessions').doc(code).get();
 }
 
 // export const generateCode = Math.floor(Math.random() * (9999 - 1000) + 1000);
