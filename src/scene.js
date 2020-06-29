@@ -53,7 +53,28 @@ function Scene(canvas, started = false) {
 
     let code = 0;
 
-    getCode().then(c => code = c);
+    getCode().then(c => {
+        code = c;
+
+        db.collection('sessions').doc(code).onSnapshot(data => {
+            console.log(data.data().finished);
+            if (data.data().finished) {
+                Anime({
+                    targets: camera.position,
+                    x: -.9,
+                    duration: 1000,
+                    easing: 'easeInOutQuart'
+                })
+    
+                Anime({
+                    targets: camera.position,
+                    y: 1.15,
+                    duration: 1000,
+                    easing: 'easeInOutQuart'
+                })
+            }
+        });
+    });
 
     function buildScene() {
         const scene = new THREE.Scene();
@@ -255,7 +276,25 @@ function Scene(canvas, started = false) {
         });
         
         state.currentFloor = camera.position.y;
-	}
+    }
+    
+    window.addEventListener('keyup', (e) => {
+        if (e.key === 'p') {
+            Anime({
+                targets: camera.position,
+                x: -.9,
+                duration: 1000,
+                easing: 'easeInOutQuart'
+            })
+
+            Anime({
+                targets: camera.position,
+                y: 1.15,
+                duration: 1000,
+                easing: 'easeInOutQuart'
+            })
+        }
+    })
 }
 
 export default Scene;

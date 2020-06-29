@@ -42,6 +42,10 @@ import Fenetre6VJ from '../textures/windows/Fenetre-6V-J.png';
 import Fenetre6VN from '../textures/windows/Fenetre-6V-N.png';
 import Fenetre6VR from '../textures/windows/Fenetre-6V-R.png';
 
+// Audios
+import Pizza from '../audios/003/VOCAL_LIVRAISON_PIZZAS.mp3';
+import Porte from '../audios/003/OUVERTURE_PORTE_CUISINE_V1_01.mp3';
+
 export default [
     [
         {
@@ -225,6 +229,19 @@ export default [
                 
                 // 00:00
                 { time: 225, texture: Fenetre2VN },
+            ]
+        }
+    ],
+    [
+        {
+            name: 'audio',
+
+            audios: [
+                // 20:00
+                { time: 83, src: Pizza },
+
+                // 22:00
+                { time: 150, src: Porte },
             ]
         }
     ]

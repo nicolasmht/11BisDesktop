@@ -30,6 +30,13 @@ import Fenetre6VJ from '../textures/windows/Fenetre-6V-J.png';
 import Fenetre6VN from '../textures/windows/Fenetre-6V-N.png';
 import Fenetre6VR from '../textures/windows/Fenetre-6V-R.png';
 
+// Audios
+import Fenetre from '../audios/003/FENETRE_OUVERTURE.mp3';
+import Arrosage from '../audios/003/EAU_TERRE_01.mp3';
+import Croquette from '../audios/003/CROQUETTE_V2_01.mp3';
+import Ronflement from '../audios/003/RONFLEMENTS_01.mp3';
+import FenetreOff from '../audios/003/FENETRE_FERMETURE.mp3';
+
 export default [
     [
         {
@@ -157,6 +164,25 @@ export default [
                 
                 // 00:00
                 { time: 225, texture: Fenetre2VN },
+            ]
+        }
+    ],
+    [
+        {
+            name: 'audio',
+
+            audios: [
+                // 18:00
+                { time: 0, src: Fenetre },
+
+                // 19:00
+                { time: 41, src: Arrosage },
+
+                // 20:00
+                { time: 66, src: Croquette },
+
+                // 01:00
+                { time: 241, src: FenetreOff },
             ]
         }
     ]

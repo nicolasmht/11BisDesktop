@@ -46,6 +46,15 @@ import Fenetre6VJ from '../textures/windows/Fenetre-6V-J.png';
 import Fenetre6VN from '../textures/windows/Fenetre-6V-N.png';
 import Fenetre6VR from '../textures/windows/Fenetre-6V-R.png';
 
+// Audios
+import Porte from '../audios/003/OUVERTURE_PORTE_APPT_SERRURE_01.mp3';
+import Clef from '../audios/003/JET_DE_CLEFS_TABLE_V1_01.mp3';
+import Tv from '../audios/003/MENU_TV_01.mp3';
+import Pipi from '../audios/003/PIPI_V1_01.mp3';
+import Frigo from '../audios/003/FRIGO_INTERIEUR_01.mp3';
+import Microonde from '../audios/003/MICROONDE_BIP_01.mp3';
+import Verre from '../audios/003/VERRE_REMPLISSEMENT_BOUTEILLE_01.mp3';
+
 export default [
     [
         {
@@ -248,6 +257,28 @@ export default [
                 
                 // 00:00
                 { time: 225, texture: Fenetre2VN },
+            ]
+        }
+    ],
+    [
+        {
+            name: 'audio',
+
+            audios: [
+                // 20:00
+                { time: 15, src: Porte },
+                { time: 91, src: Clef },
+
+                // 22:00
+                { time: 133, src: Tv },
+                { time: 150, src: Pipi },
+
+                // 23:00
+                { time: 166, src: Frigo },
+                { time: 183, src: Microonde },
+
+                // 00:00
+                { time: 208, src: Verre },
             ]
         }
     ]

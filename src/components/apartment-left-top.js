@@ -35,14 +35,12 @@ function ApartmentLeftTop(scene) {
                 new Howl({
                     src: audio.src,
                     autoplay: true,
+                    volume: .25
                 });
-
-                console.log(audio.src)
 
                 audio.passed = true;
             }
-
-        })
+        });
     }
 
     this.helpers = (gui) => {

@@ -139,10 +139,11 @@ THREE.DefaultLoadingManager.onError = function ( url ) {
 
 };
 
+// Reload
 document.addEventListener('keyup', (e) => {
     if (e.key === "r") {
         sessionStorage.removeItem('CODE');
         document.location.reload(true);
     }
-})
-//localStorage.removeItem('image');
+});
+

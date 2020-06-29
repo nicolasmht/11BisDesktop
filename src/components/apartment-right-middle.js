@@ -25,6 +25,20 @@ function ApartmentRightMiddle(scene) {
     this.update = (time) => {
         AnimeTimeline(time, Timeline[0], currentApartment);
         AnimeWindows(time, Timeline[1], currentApartment);
+
+        Timeline[2][0].audios.map(audio => {
+
+            if (time > audio.time && audio.passed == undefined) {
+                
+                new Howl({
+                    src: audio.src,
+                    autoplay: true,
+                    volume: .25
+                });
+
+                audio.passed = true;
+            }
+        });
     }
 
     this.helpers = (gui) => {

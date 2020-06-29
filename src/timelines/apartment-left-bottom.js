@@ -142,5 +142,5 @@ export default [
                 { time: 100, texture: Fenetre4VN },
             ]
         }
-    ]
+    ],
 ];

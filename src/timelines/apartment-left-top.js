@@ -46,10 +46,11 @@ import Fenetre6VN from '../textures/windows/Fenetre-6V-N.png';
 import Fenetre6VR from '../textures/windows/Fenetre-6V-R.png';
 
 // Audios
-import Keyboard from '../audios/001/CLAVIER_ORDI.mp3';
-import Cuisine from '../audios/001/VIE_CUISINE_AMBIANCE.mp3';
-import Netflix from '../audios/001/NETFLIX_TOUDOUM.mp3';
-import Vaisselle from '../audios/001/VAISSELLE_COUVERT_ENTRECH.mp3';
+import Keyboard from '../audios/003/CLAVIER_ORDI_01.mp3';
+import Porte from '../audios/003/PORTE_GRINCEMENT_01.mp3';
+import Parquet from '../audios/003/PAS_SUR_PARQUET_BASKET_BOUCLE.mp3';
+import Netflix from '../audios/003/NETFLIX_TOUDOUM_01.mp3';
+import Vaiselle from '../audios/003/EMPILEMENT_VAISELLE_01.mp3';
 
 export default [
     [
@@ -243,15 +244,15 @@ export default [
             name: 'audio',
 
             audios: [
-                { time: 0, src: Keyboard },
-                // 19:48
-                { time:  58, src: Cuisine },
-                // 20:30
-                { time: 83, src: Netflix },
+                { time: 83, src: Keyboard },
+                // 18:30
+                { time: 16, src: Porte },
+                // 19:00
+                { time: 33, src: Parquet },
                 // 20:30
                 { time: 83, src: Netflix },
                 // 22:15
-                { time: 141, src: Vaisselle } 
+                { time: 133, src: Vaiselle },
             ]
         }
     ]
