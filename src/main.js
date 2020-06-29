@@ -138,3 +138,11 @@ THREE.DefaultLoadingManager.onProgress = function ( url, itemsLoaded, itemsTotal
 THREE.DefaultLoadingManager.onError = function ( url ) {
 
 };
+
+document.addEventListener('keyup', (e) => {
+    if (e.key === "r") {
+        sessionStorage.removeItem('CODE');
+        document.location.reload(true);
+    }
+})
+//localStorage.removeItem('image');
