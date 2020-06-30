@@ -11,7 +11,8 @@ const createCodeDatabase = async (code) => {
         code: code,
         connected: false,
         use: false,
-        apartment: 0
+        apartment: 0,
+        finished: false
     };
 
     await firestore

@@ -56,8 +56,7 @@ function Scene(canvas, started = false) {
     getCode().then(c => {
         code = c;
 
-        db.collection('sessions').doc(code).onSnapshot(data => {
-            console.log(data.data().finished);
+        db.collection('sessions').doc(code.toString()).onSnapshot(data => {
             if (data.data().finished) {
                 Anime({
                     targets: camera.position,
